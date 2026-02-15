@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para una persona increíble</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    background: linear-gradient(135deg,#a1c4fd,#c2e9fb);
+    font-family: 'Georgia', serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.boton{
+    background:#2b6cb0;
+    color:white;
+    padding:18px 40px;
+    font-size:22px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.boton:hover{
+    background:#1e4f8a;
+    transform:scale(1.05);
+}
+
+.carta{
+    display:none;
+    background:white;
+    padding:40px;
+    max-width:650px;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    text-align:left;
+}
+
+h1{
+    color:#2b6cb0;
+}
+
+#texto{
+    font-size:18px;
+    line-height:1.6;
+    color:#333;
+    white-space:pre-line;
+}
+</style>
+</head>
+
+<body>
+
+<button class="boton" onclick="iniciar()">Abrir mensaje</button>
+
+<div class="carta" id="carta">
+    <h1>Para ti ✨</h1>
+    <div id="texto"></div>
+</div>
+
+<script>
+const mensaje = `Quería escribirte algo sencillo,
+pero que fuera completamente sincero.
+
+A veces no digo lo suficiente lo mucho que valoro
+tenerte en mi vida.
+
+Tu manera de ser,
+tu forma de ver las cosas,
+y esa energía tan tuya
+hacen que todo sea un poco más llevadero.
+
+Gracias por las conversaciones,
+por las risas,
+y por estar cuando hace falta.
+
+Ojalá nunca olvides lo increíble que eres.`;
+
+function iniciar(){
+    document.querySelector(".boton").style.display="none";
+    document.getElementById("carta").style.display="block";
+    escribirTexto();
+}
+
+function escribirTexto(){
+    let i=0;
+    const velocidad=35;
+    function escribir(){
+        if(i < mensaje.length){
+            document.getElementById("texto").innerHTML += mensaje.charAt(i);
+            i++;
+            setTimeout(escribir,velocidad);
+        }
+    }
+    escribir();
+}
+</script>
+
+</body>
+</html>
